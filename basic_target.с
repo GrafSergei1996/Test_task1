@@ -74,7 +74,8 @@ static int basic_target_map(struct dm_target *ti, struct bio *bio,union map_info
         count_request = count_read_request+count_write_request;
         avg_size = avg_size_write+avg_size_read;
         fin.close();
-        fistream fout(std::string("/sys/block/)+std::string(mdt->name)/stat/volumes");
+        fistream fout(std::string("/sys/block/)+std::string(mdt->name)/stat/volumes");//здесь я использую файловую систему sysfs для того,
+        //чтобы просмотреть статистику.
         fout << "read\n";
         fout << "reqs:";
         fout << count_read_request;
