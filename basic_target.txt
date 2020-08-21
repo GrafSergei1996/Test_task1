@@ -61,7 +61,8 @@ static int basic_target_map(struct dm_target *ti, struct bio *bio,union map_info
 
         printk(KERN_CRIT "\n>>out function basic_target_map \n");    
         //Статистика
-        fostream fin(std::string("/sys/block/")+std::string(mdt->name)+std::string("/stat"));
+        fostream fin(std::string("/sys/block/")+std::string(mdt->name)+std::string("/stat"));//здесь я использую файловую систему sysfs для того,
+        //чтобы просмотреть статистику.
         fin >> count_read_request;
         fin >> avg_size_read;
         fin >> avg_size_read;
